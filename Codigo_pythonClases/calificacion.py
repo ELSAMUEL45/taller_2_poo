@@ -9,7 +9,7 @@ class Calificacion():
 
     Attributes:
         usuario (Usuario): Usuario que califica.
-        cancion (Cancion): Correo electrónico con el que se crea la cuenta.
+        cancion (Cancion):Cancion que se califica.
         valor (float): valor que se le pone al calificar 
         comentario (str): descripcion del porque la calificacion
         fecha (string) : fecha en la que se hizo la calificacion
@@ -21,7 +21,7 @@ class Calificacion():
 
         Args:
             usuario (Usuario): Usuario que califica.
-            cancion (Cancion): Correo electrónico con el que se crea la cuenta.
+            cancion (Cancion): Cancion que se va a calificar.
             valor (float): valor que se le pone al calificar 
             comentario (str): descripcion del porque la calificacion
             
