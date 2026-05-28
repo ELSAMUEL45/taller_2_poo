@@ -87,5 +87,35 @@ class Cancion():
         
         return informacion
 
+    def __eq__(self, otra_cancion):
+        """
+        Compara 2 canciones para saber si son iguales, compara titulo, año y artista
+
+
+        Args:
+            otra_cancion (Cancion): Otra cancion con la que se desea comparar
+
+
+
+        Returns:
+            bool: True si ambas canciones son iguales en sus atributos artista, titulo y año 
+        """
+        return self.artista == otra_cancion.artista and self.titulo == otra_cancion.titulo and self.año == otra_cancion.año
+
+    def __lt__(self, otra_cancion):
+        """
+        Compara 2 canciones para saber cual es menor con el titulo de la cancion
+
+
+        Args:
+            otra_cancion (Cancion): Otra cancion con la que se desea comparar
+
+
+
+        Returns:
+            bool: True si cancion_1 es menor a la cancion_2 
+        """
+        return self.titulo < otra_cancion.titulo
+
 
     
