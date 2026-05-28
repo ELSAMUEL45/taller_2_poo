@@ -1,6 +1,7 @@
 #Clase usuario taller 2 Spotify
 from lista_reproduccion import ListaReproduccion
 from favorito import Favorito
+from calificacion import Calificacion
 class Usuario():
     """
     Clase abstracta que representa la estructura  de un Usuario en la aplicacion.
@@ -76,11 +77,11 @@ class Usuario():
             return False
 
     def agregar_favorito(self,cancion):
-       """
-            Crea un nuevo favorito que se agrega a la lista 
+        """
+        Crea un nuevo favorito que se agrega a la lista 
 
 
-            Args:
+        Args:
             cancion (Cancion): Cancion que se desea agregar a favoritos.
 
         """
@@ -96,14 +97,22 @@ class Usuario():
             cancion (Cancion): Cancion que se desea eliminar de favoritos.
 
         """
-        try: 
-            favorito_a_quitar = Favorito(cancion)
-            self.favorito.remove(favorito_a_quitar)
-        except:
-            print("No se pudo eliminar el favorito")
+        favorito_a_quitar = Favorito(cancion)
+        self.favorito.remove(favorito_a_quitar)
 
     def calificar_cancion(self,cancion, valor):
-        pass
+        """
+            Crea una nueva calificacion que se agrega a lista de calificaciones de la cancion
+
+
+            Args:
+                cancion (Cancion): Cancion que se desea eliminar de favoritos.
+                valor (float): valor que se le desea poner de calificacion a la cancion
+
+        """
+        nueva_calificacion = Calificacion(self, cancion, valor)
+        cancion.agregar_calificacion(nueva_calificacion)
+        
 
     def cambiar_suscripcion(self, suscripcion_nueva):
         """
