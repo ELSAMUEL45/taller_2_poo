@@ -1,5 +1,5 @@
 #Clase cancion taller 2 Spotify
-
+from calificacion import Calificacion
 class Cancion():
     """
     Clase abstracta que representa la estructura de una cancion en la aplicacion.
@@ -14,6 +14,7 @@ class Cancion():
         reproducciones (int): numero de reproducciones de la cancion, cuando se inicializa el objeto es 0
         calificacion (float): entre el 1-5  que tanta calificacion tiene la cancion
         creditos (str): creditos a las personas que trabajaron en la cancion 
+        calificaciones (List[Calificacion]): Lista de calificaciones relacionadas a esa cancion
     """
     
     def __init__(self, titulo, artista, genero, duracion, año, creditos, album=""):
@@ -37,8 +38,9 @@ class Cancion():
         self.duracion = duracion
         self.año = año
         self.reproducciones = 0
-        self.calificancion = 0
+        self.calificacion = 0.0
         self.creditos = creditos
+        self.calificaciones = []
 
 
     def incrementar_reproducciones(self):
@@ -48,21 +50,20 @@ class Cancion():
         """
         self.reproducciones += 1
     
-    def actualizar_calificacion(self, nueva_calificacion):
+    def actualizar_calificacion(self):
         """
-        Actualiza el valor de la calificacion que existia antes
-
-
-        Args:
-            nueva_calificacion (float): Calificacion que reemplaza la anterior 
-
-
+        Actualiza el valor de la calificacion que existia antes, recorriendo la lista de calificaciones y obteniendo un promedio
 
         Returns:
             bool: True si la actualizacion se realizo correctamente 
         """
         try:
-            self.calificancion = nueva_calificacion
+            cantidad = 0
+            suma = 0.0
+            for califi in self.calificaciones:
+                suma += califi.valor
+            promedio = suma/cantidad
+            self.calificacion = promedio
             return True
         except:
             return False
@@ -86,6 +87,18 @@ class Cancion():
                        'Creditos':self.creditos}
         
         return informacion
+
+    def agregar_calificacion(self, calificacion_nueva):
+        """
+            Agrega una calificacion nueva a lista de calificaciones y actualiza el promedio de calificaciones
+
+
+            Args:
+                calificacion (Calificacion): nueva calificacion para asignar a lista.
+
+        """
+        self.calificaciones.append(calificacion_nueva)
+        self.actualizar_calificacion()
 
     def __eq__(self, otra_cancion):
         """
@@ -113,7 +126,7 @@ class Cancion():
 
 
         Returns:
-            bool: True si cancion_1 es menor a la cancion_2 
+            bool: True si cancion_1 es menor a la cancion 2 
         """
         return self.titulo < otra_cancion.titulo
 
