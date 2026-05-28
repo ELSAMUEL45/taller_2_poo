@@ -1,7 +1,7 @@
-#Clase Ranking taller 2
-from datetime import datetime
+#Clase suscripcion taller 2
+from datetime import datetime, timedelta
 
-class Ranking():
+class Suscripcion():
     """
     Clase abstracta que representa la estructura de una suscripcion en la aplicacion.
 
@@ -25,18 +25,35 @@ class Ranking():
             fecha_inicio (str): fecha en la que inicia la suscripcion.
             fecha_fin (str): fecha en la que termina la suscripcion.
         """
+        mes = datetime.now().month
+
+
         self.plan = plan
         self.precio = precio
         self.metodo_de_pago = metodo_de_pago
-        self.estado = "Activo"
+        self.estado = "Pendiente"
         self.fecha_inicio = datetime.now().strftime("%Y-%m-%d")
-        self.fecha_fin = 'fecha_fin'
+        self.fecha_fin = datetime.now().replace(month= mes+1).strftime("%Y-%m-%d")
 
     def activar(self):
-        pass
+        """
+            Cambia el estado de un plan activo
+        """
+        self.estado = "Activo"
+        
 
     def cancelar(self):
+        """
+            Cambia el estado de un plan a Cancelado
+        """
+        self.estado = "Cancelado"
         pass
 
     def renovar(self):
+        """
+         Cambia el estado de un plan a Cancelado
+        """
+        mes = datetime.now().month
+
+        self.fecha_fin = datetime.now().replace(month=mes+1).strftime("%Y-%m-%d")
         pass
