@@ -39,13 +39,14 @@ class Reproductor():
 
     def reproducir_cancion(self, cancion):
         """
-        Asigna una cancion a la variable del reproductor
+        Asigna una cancion a la variable del reproductor y llama a la funcion incrementar_reproducciones de la cancion
 
 
         Args:
             cancion (Cancion) : cancion que se desea reproducir
         """
         self.cancion_actual = cancion
+        cancion.incrementar_reproducciones()
     
     def pausar_cancion(self):
         """
