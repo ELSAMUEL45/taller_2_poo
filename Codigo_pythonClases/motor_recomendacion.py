@@ -1,7 +1,7 @@
 #Clase motorrecomendacion taller 2 Spotify
 from datetime import datetime
 
-class Reproductor():
+class MotorRecomendacion():
     """
     Clase abstracta que representa del algoritmo de recomendacion en la aplicacion.
 
