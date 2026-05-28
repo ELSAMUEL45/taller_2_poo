@@ -1,6 +1,6 @@
 #Clase usuario taller 2 Spotify
 from lista_reproduccion import ListaReproduccion
-
+from favorito import Favorito
 class Usuario():
     """
     Clase abstracta que representa la estructura  de un Usuario en la aplicacion.
@@ -10,7 +10,9 @@ class Usuario():
         correo (str): Correo electrónico con el que se crea la cuenta.
         contraseña (str): Contraseña 
         lista_reproducción (List[ListaReproducción]): listas de reproducciones creadas por el usuario
-        suscripcion (Suscripcion ! None) : informacion de la suscripcion
+        suscripcion (Suscripcion | None) : informacion de la suscripcion
+        favorito (list[Favoritos]): lista de canciones favoritas
+        
     """
     
     def __init__(self, nombre, correo, contraseña, suscripcion=None):
@@ -22,12 +24,14 @@ class Usuario():
             correo (str): Correo electrónico con el que se crea la cuenta.
             contraseña (str): Contraseña 
             suscripcion (Suscripcion ! None) : informacion de la suscripcion
+            favorito (list[Favoritos]): lista de canciones favoritas
         """
         self.nombre = nombre
         self.__correo = correo
         self.__contraseña = contraseña
         self.lista_reproducción = []
         self.suscripcion = suscripcion
+        self.favorito = []
 
     def iniciar_sesion(self, correo ,contraseña):
         """
@@ -72,14 +76,44 @@ class Usuario():
             return False
 
     def agregar_favorito(self,cancion):
-        pass
+       """
+            Crea un nuevo favorito que se agrega a la lista 
+
+
+            Args:
+            cancion (Cancion): Cancion que se desea agregar a favoritos.
+
+        """
+        nuevo_favorito = Favorito(cancion)
+        self.favorito.append(nuevo_favorito)
 
     def quitar_favoritos(self,cancion):
-        pass
+        """
+            Crea un nuevo favorito que se compara en la lista para eliminarlo
+
+
+            Args:
+            cancion (Cancion): Cancion que se desea eliminar de favoritos.
+
+        """
+        try: 
+            favorito_a_quitar = Favorito(cancion)
+            self.favorito.remove(favorito_a_quitar)
+        except:
+            print("No se pudo eliminar el favorito")
 
     def calificar_cancion(self,cancion, valor):
         pass
 
+    def cambiar_suscripcion(self, suscripcion_nueva):
+        """
+            Cambia la suscripcion que se tiene actualmente
 
+
+            Args:
+            suscripcion_nueva (Suscripcion): suscripcion por la que se desea actualizar.
+
+        """
+        self.suscripcion = suscripcion_nueva
 
     
