@@ -1,5 +1,6 @@
 #Clase Ranking taller 2
 from datetime import datetime
+from cancion import Cancion
 
 class Ranking():
     """
@@ -11,6 +12,7 @@ class Ranking():
         canciones (List(Cancion)): lista de las canciones en el ranking
         fecha_actualizacion (str): fecha en la que se actualizo el ranking
     """
+    organizada = []
     def __init__(self, nombre, criterio):
         """
         Inicializa los atributos base del ranking.
@@ -43,3 +45,20 @@ class Ranking():
             list[Cancion]: Lista de canciones, con la cantidad previamente indicada
         """
         return self.canciones[0:cantidad+1]
+    def organizar_por_reproducciones(self, lista):
+        cancion = lista[0]
+        reproducciones = lista[0].reproducciones
+        for i in lista:
+            if i.reproducciones > cancion.reproducciones:
+                cancion = i
+                reproducciones = i.reproducciones
+        Ranking.organizada.append(cancion)
+        nueva_lista = lista.remove(cancion)
+        self.organizar_por_reproducciones(nueva_lista)
+        
+    def generar_ranking(self, criterio):
+        if criterio == "#Masescuchadas":
+            todas_canciones = Cancion.todas_las_canciones()
+            self.organizar_por_reproducciones(todas_canciones)
+        return Ranking.organizada
+            
