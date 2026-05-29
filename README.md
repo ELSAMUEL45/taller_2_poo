@@ -1,5 +1,5 @@
 # taller_2_poo
 
-el diagrama de la pagina xd
+Diagrama UML - Reproductor de música tipo Spotify
 
-[![Diagrama de Clases POO](./Downloads/poo/Taller_2-Page-1.drawio.svg)](./Downloads/poo/Taller_2-Page-1.drawio.svg)
+<img width="1475" height="954" alt="Taller_2-Page-1 drawio" src="https://github.com/user-attachments/assets/173ecb06-d60f-4b24-a634-7633bb1b6517" />
