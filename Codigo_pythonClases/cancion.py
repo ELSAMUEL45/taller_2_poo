@@ -16,7 +16,7 @@ class Cancion():
         creditos (str): creditos a las personas que trabajaron en la cancion 
         calificaciones (List[Calificacion]): Lista de calificaciones relacionadas a esa cancion
     """
-    
+    biblioteca = []
     def __init__(self, titulo, artista, genero, duracion, año, creditos, album=""):
         """
         Inicializa los atributos base de la cancion.
@@ -42,6 +42,38 @@ class Cancion():
         self.creditos = creditos
         self.calificaciones = []
 
+        Cancion.biblioteca.append(self)
+
+    @classmethod
+    def buscar_por_artista(cls, busqueda):
+        nombre_artista = busqueda.lower()
+        resultado = []
+        for cancion in cls.biblioteca:
+            if cancion.artista.lower() == nombre_artista:
+                resultado.append(cancion)
+        return resultado
+    
+    @classmethod
+    def buscar_por_nombre(cls, busqueda):
+        nombre_cancion = busqueda.lower()
+        resultado = []
+        for cancion in cls.biblioteca:
+            if cancion.titulo.lower() == nombre_cancion:
+                resultado.append(cancion)
+        return resultado
+    
+    @classmethod
+    def todas_las_canciones(cls):
+        return cls.biblioteca
+    
+    @classmethod
+    def buscar_por_genero(cls, busqueda):
+        genero = busqueda.lower()
+        resultado = []
+        for cancion in cls.biblioteca:
+            if cancion.genero.lower() == genero:
+                resultado.append(cancion)
+        return resultado
 
     def incrementar_reproducciones(self):
         """
