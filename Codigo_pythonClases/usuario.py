@@ -48,12 +48,13 @@ class Usuario():
             bool: True si tanto el correo como la contraseña son iguales
         """
         if self.__correo == correo and self.__contraseña == contraseña:
+            print(f'Bienvenido {self.nombre}')
             return True
         
         return False
     
     def cerrar_sesion(self):
-        pass
+        print(f'Hasta pronto')
 
     def crear_lista_reproduccion(self, nombre ,descripcion, es_publica=False):
         """
